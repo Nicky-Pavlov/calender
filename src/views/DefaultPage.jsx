@@ -1,20 +1,10 @@
 
 import { useEffect, useState } from 'react'
+import { useOutletContext } from 'react-router-dom'
 import EventList from '../components/EventList'
 import calenderPic from '../assets/calender_pic.jpg'
 
 const SEARCH_STORAGE_KEY = 'eventSearchTerm'
-
-// Static event data shown in the calendar list.
-const events = [
-
-  { id: 1, title: "Meeting", date : "2024-06-01", description: "Team meeting to discuss project progress."}, 
-  { id: 2, title: "Conference", date : "2024-06-15", description: "Annual tech conference with industry leaders."},  
-  { id: 3, title: "Workshop", date : "2024-06-20", description: "Hands-on workshop on new software tools."},  
-  { id: 4, title: "Webinar", date : "2024-06-25", description: "Online webinar on digital marketing strategies."},
-  { id: 5, title: "Birthday Party", date : "2024-06-30", description: "Celebrating John's 30th birthday with friends and family."}
-
-]
 
 // Returns events that match the current search query.
 function filterEventsByQuery(sortedEvents, searchTerm) {
@@ -29,6 +19,8 @@ function filterEventsByQuery(sortedEvents, searchTerm) {
 }
 
  function DefaultPage() {
+ const { events } = useOutletContext()
+
  // Load saved search text on first render.
  const [searchTerm, setSearchTerm] = useState(
   () => localStorage.getItem(SEARCH_STORAGE_KEY) ?? ''

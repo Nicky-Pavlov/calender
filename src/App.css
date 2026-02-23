@@ -60,3 +60,21 @@ nav a:hover {
   border-radius: 12px;
   font-size: 1rem;
 }
+
+input,
+textarea,
+button {
+  display: block;
+  margin: 0.75rem auto;
+  width: min(500px, 90%);
+  padding: 1rem;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+}
+
+textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
