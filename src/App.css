@@ -47,7 +47,7 @@ nav a:hover {
   height: auto;
   margin: 1rem auto 2rem;
   display: block;
-  border: 6px solid red;
+  border: 6px solid #ff69b4;
   border-radius: 28px;
 }
 
