@@ -1,0 +1,62 @@
+#root {
+ 
+  margin: 0 auto;
+  text-align: center;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background-color: magenta;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  margin: -2rem -2rem 1rem -2rem;
+  width: calc(100% + 4rem);
+}
+
+nav {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: opacity 0.2s;
+}
+
+nav a:hover {
+  color: black;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.event-hero {
+  max-width: 40%;
+  height: auto;
+  margin: 1rem auto 2rem;
+  display: block;
+  border: 6px solid red;
+  border-radius: 28px;
+}
+
+.event-search {
+  width: min(420px, 100%);
+  padding: 0.5rem 1rem;
+  margin: 0 auto 1.5rem;
+  display: block;
+  border: 2px solid #ff69b4;
+  border-radius: 12px;
+  font-size: 1rem;
+}
