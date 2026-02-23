@@ -1,5 +1,11 @@
 export default function Create() {
  return (
-  <>  this is the create page  </>
+  <div> 
+    <h1>Create event</h1>
+    <input type="text" placeholder="Event title" />
+    <input type="date" />
+    <textarea placeholder="Event description" />
+    <button>Create</button>
+  </div>
  )
 }
