@@ -86,6 +86,13 @@ button {
   border-radius: 8px;
 }
 
+button {
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  transition: background-color 0.2s;
+}
+
 textarea {
   min-height: 150px;
   resize: vertical;
