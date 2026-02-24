@@ -29,7 +29,7 @@ export default function Create() {
 
  return (
   <div> 
-    <h1>Create event</h1>
+    <h1 className="event-title">Create event</h1>
     <form onSubmit={handleSubmit}>
      <input 
       type="text" 
