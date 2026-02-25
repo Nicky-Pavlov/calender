@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import EventList from '../components/EventList'
-import calenderPic from '../assets/calender_pic.jpg'
+
 
 const SEARCH_STORAGE_KEY = 'eventSearchTerm'
 

@@ -5,26 +5,18 @@ import Header from './components/Header'
 
 const EVENTS_STORAGE_KEY = 'calendarEvents'
 
-const initialEvents = [
-  { id: 1, title: "Meeting", date : "2024-06-01", description: "Team meeting to discuss project progress."}, 
-  { id: 2, title: "Conference", date : "2024-06-15", description: "Annual tech conference with industry leaders."},  
-  { id: 3, title: "Workshop", date : "2024-06-20", description: "Hands-on workshop on new software tools."},  
-  { id: 4, title: "Webinar", date : "2024-06-25", description: "Online webinar on digital marketing strategies."},
-  { id: 5, title: "Birthday Party", date : "2024-06-30", description: "Celebrating John's 30th birthday with friends and family."}
-]
-
 function loadEvents() {
     try {
         const savedEvents = localStorage.getItem(EVENTS_STORAGE_KEY)
 
         if (!savedEvents) {
-            return initialEvents
+            return []
         }
 
         const parsedEvents = JSON.parse(savedEvents)
-        return Array.isArray(parsedEvents) ? parsedEvents : initialEvents
+        return Array.isArray(parsedEvents) ? parsedEvents : []
     } catch {
-        return initialEvents
+        return []
     }
 }
 
