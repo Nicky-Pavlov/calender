@@ -2,11 +2,18 @@ import { useState } from 'react'
 import { useOutletContext, useNavigate } from 'react-router-dom'
 
 export default function Create() {
- const { addEvent } = useOutletContext()
+ const { setEvents } = useOutletContext()
  const navigate = useNavigate()
  const [title, setTitle] = useState('')
  const [date, setDate] = useState('')
  const [description, setDescription] = useState('')
+
+ const addEvent = (newEvent) => {
+  setEvents((prevEvents) => [
+   ...prevEvents,
+   { id: Math.max(...prevEvents.map((event) => event.id), 0) + 1, ...newEvent }
+  ])
+ }
 
  const handleSubmit = (e) => {
   e.preventDefault()

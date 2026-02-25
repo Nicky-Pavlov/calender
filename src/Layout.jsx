@@ -1,7 +1,9 @@
 import {Outlet} from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Footer from './components/Footer'
 import Header from './components/Header'
+
+const EVENTS_STORAGE_KEY = 'calendarEvents'
 
 const initialEvents = [
   { id: 1, title: "Meeting", date : "2024-06-01", description: "Team meeting to discuss project progress."}, 
@@ -11,18 +13,37 @@ const initialEvents = [
   { id: 5, title: "Birthday Party", date : "2024-06-30", description: "Celebrating John's 30th birthday with friends and family."}
 ]
 
-function Layout() {
-    const [events, setEvents] = useState(initialEvents)
+function loadEvents() {
+    try {
+        const savedEvents = localStorage.getItem(EVENTS_STORAGE_KEY)
 
-    const addEvent = (newEvent) => {
-        setEvents([...events, { id: Math.max(...events.map(e => e.id), 0) + 1, ...newEvent }])
+        if (!savedEvents) {
+            return initialEvents
+        }
+
+        const parsedEvents = JSON.parse(savedEvents)
+        return Array.isArray(parsedEvents) ? parsedEvents : initialEvents
+    } catch {
+        return initialEvents
     }
+}
+
+function Layout() {
+    const [events, setEvents] = useState(loadEvents)
+
+    const deleteEvent = (eventId) => {
+        setEvents((prevEvents) => prevEvents.filter((event) => event.id !== eventId))
+    }
+
+    useEffect(() => {
+        localStorage.setItem(EVENTS_STORAGE_KEY, JSON.stringify(events))
+    }, [events])
 
     return (
         <>
             <Header />
                 <main>
-                    <Outlet context={{ events, addEvent }} />
+                     <Outlet context={{ events, setEvents, deleteEvent }} />
                 </main>
             <Footer />
         </>

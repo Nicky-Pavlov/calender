@@ -74,6 +74,13 @@ nav a:hover {
   background-color: white;
 }
 
+.event-delete-button {
+  width: auto;
+  margin: 1rem bottom 1rem auto;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.9rem;
+}
+
 input,
 textarea,
 button {

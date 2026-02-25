@@ -19,7 +19,7 @@ function filterEventsByQuery(sortedEvents, searchTerm) {
 }
 
  function DefaultPage() {
- const { events } = useOutletContext()
+ const { events, deleteEvent } = useOutletContext()
 
  // Load saved search text on first render.
  const [searchTerm, setSearchTerm] = useState(
@@ -52,7 +52,7 @@ function filterEventsByQuery(sortedEvents, searchTerm) {
      value={searchTerm}
      onChange={handleSearchChange}
     />
-    <EventList events={filteredEvents} />
+    <EventList events={filteredEvents} onDelete={deleteEvent} />
 
   </div>
  )
