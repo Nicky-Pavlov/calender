@@ -1,5 +1,22 @@
 import { Link } from 'react-router-dom'
 
+function addDaySuffix(day) {
+  if (day % 100 >= 11 && day % 100 <= 13) {
+    return `${day}th`
+  }
+
+  switch (day % 10) {
+    case 1:
+      return `${day}st`
+    case 2:
+      return `${day}nd`
+    case 3:
+      return `${day}rd`
+    default:
+      return `${day}th`
+  }
+}
+
 function formatEventDate(value) {
   if (!value) {
     return ''
@@ -11,11 +28,11 @@ function formatEventDate(value) {
     return value
   }
 
-  return new Intl.DateTimeFormat('en-GB', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  }).format(parsed)
+  const day = addDaySuffix(parsed.getDate())
+  const month = parsed.toLocaleString('en-GB', { month: 'long' })
+  const year = parsed.getFullYear()
+
+  return `${day} ${month} ${year}`
 }
 
 export default function EventItem({ event, onDelete }) {
